@@ -17,9 +17,18 @@ import { Provider } from 'react-redux';
 
 export default function App() {
 
+  const rootReducer = combineReducers({
+    chat: ChatReducer,
+    //user: UserReducer,
+    //posts: PostReducer
+  });
+
+  const store = createStore(rootReducer);
+
 const Tab = createBottomTabNavigator();
 
   return (
+    <Provider store={store}>
       <NavigationContainer>
         <Tab.Navigator screenOptions={{ headerShown: false }}>
           <Tab.Screen name="Home" component={HomeScreen} />
@@ -28,6 +37,7 @@ const Tab = createBottomTabNavigator();
           <Tab.Screen name="Menu" component={MenuScreen} />
         </Tab.Navigator>
       </NavigationContainer>
+    </Provider>
   );
 }
 

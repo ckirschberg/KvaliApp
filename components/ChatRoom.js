@@ -21,7 +21,7 @@ const ChatRoom = props => {
             <View style={styles.imageView}>
                 <Image
                     style={styles.tinyLogo}
-                    source={require('./../assets/ac99082f65d5c636e14e70785817899e.png')}/>
+                    source={props.chatroom.imageUrl}/>
             </View>
             <View style={styles.textView}>
                 <Text style={styles.text}>{props.chatroom.chatRoomName}</Text>

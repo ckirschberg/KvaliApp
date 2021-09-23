@@ -18,7 +18,7 @@ export const Messages = [
 ];
 
 export const ChatRooms = [
-    new ChatRoom('1', 'urlToImage', 'CBS Surf', Messages),
-    new ChatRoom('2', 'urlToImage', 'CBS Feminist Society', []),
-    new ChatRoom('3', 'urlToImage', 'CBS Students', []),
+    new ChatRoom('1', require('./../assets/ac99082f65d5c636e14e70785817899e.png'), 'CBS Surf', Messages),
+    new ChatRoom('2', require('./../assets/ac99082f65d5c636e14e70785817899e.png'), 'CBS Feminist Society', []),
+    new ChatRoom('3', require('./../assets/ac99082f65d5c636e14e70785817899e.png'), 'CBS Students', []),
 ];
