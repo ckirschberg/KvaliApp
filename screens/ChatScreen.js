@@ -6,13 +6,13 @@ import { useNavigation } from '@react-navigation/native';
 import ChatRoom from './../components/ChatRoom'
 import { useDispatch, useSelector } from 'react-redux';
 
-import { toggleHappy, newChatRoom } from './../store/actions/ChatActions';
+import { toggleHappy, newChatRoom, deleteChatRoom } from './../store/actions/ChatActions';
 import defaultStyles from './../GeneralStyles';
 
 const ChatScreen = props => {
    const isHappy = useSelector(state => state.chat.isHappy);
    const chatRooms = useSelector(state => state.chat.chatRooms);
-   
+
    const [text, onChangeText] = useState("");
    const dispatch = useDispatch();
 
@@ -28,6 +28,7 @@ const ChatScreen = props => {
          <TextInput style={defaultStyles.textInput} onChangeText={onChangeText} value={text} />
 
          <Button title="Test create chatroom" onPress={() => dispatch(newChatRoom(text)) } />
+         <Button title="Test delete chatroom" onPress={() => dispatch(deleteChatRoom(text)) } />
           <FlatList
             data={chatRooms}
             renderItem={itemData => (
