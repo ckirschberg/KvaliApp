@@ -1,15 +1,19 @@
-import React from 'react';
-import { View, Text, Button, StyleSheet, FlatList } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Button, StyleSheet, FlatList, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { ChatRooms } from './../dummy-data/DummyData';
+
 import ChatRoom from './../components/ChatRoom'
 import { useDispatch, useSelector } from 'react-redux';
 
-import { toggleHappy } from './../store/actions/ChatActions';
+import { toggleHappy, newChatRoom } from './../store/actions/ChatActions';
+import defaultStyles from './../GeneralStyles';
 
 const ChatScreen = props => {
    const isHappy = useSelector(state => state.chat.isHappy);
+   const chatRooms = useSelector(state => state.chat.chatRooms);
+   
+   const [text, onChangeText] = useState("");
    const dispatch = useDispatch();
 
    const handleChristianHappy = () => {
@@ -20,8 +24,12 @@ const ChatScreen = props => {
       <View style={styles.container}>
          <Text>Is Christian happy? {String(isHappy)}</Text>      
          <Button title="Flip Christian Happy" onPress={handleChristianHappy} />
+         
+         <TextInput style={defaultStyles.textInput} onChangeText={onChangeText} value={text} />
+
+         <Button title="Test create chatroom" onPress={() => dispatch(newChatRoom(text)) } />
           <FlatList
-            data={ChatRooms}
+            data={chatRooms}
             renderItem={itemData => (
                 <ChatRoom chatroom={itemData.item}></ChatRoom>
             )}
@@ -37,6 +45,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
    },
+   
 });
 
 export default ChatScreen;

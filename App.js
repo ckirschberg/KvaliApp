@@ -11,20 +11,27 @@ import DiscoverScreen from './screens/DiscoverScreen';
 import MenuScreen from './screens/MenuScreen';
 import { HeaderShownContext } from '@react-navigation/elements';
 
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import ChatReducer from './store/reducers/ChatReducer';
 import { Provider } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
+
+const rootReducer = combineReducers({
+  chat: ChatReducer,
+  //user: UserReducer,
+  //posts: PostReducer
+});
+
+
+const store = createStore(rootReducer, 
+  composeWithDevTools());
+
+
+  
 export default function App() {
 
-  const rootReducer = combineReducers({
-    chat: ChatReducer,
-    //user: UserReducer,
-    //posts: PostReducer
-  });
-
-  const store = createStore(rootReducer);
-
+  
 const Tab = createBottomTabNavigator();
 
   return (

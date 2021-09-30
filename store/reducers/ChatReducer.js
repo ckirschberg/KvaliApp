@@ -1,8 +1,10 @@
+import ChatRoom from "./../../models/ChatRoom";
 import { NEW_CHATROOM, TOGGLE_HAPPY } from "../actions/ChatActions";
+import { ChatRooms } from './../../dummy-data/DummyData';
 
 const initialState = {
     isHappy: false,
-    chatRooms: []
+    chatRooms: ChatRooms
 };
 
 const ChatReducer = (state = initialState, action) => {
@@ -12,6 +14,13 @@ const ChatReducer = (state = initialState, action) => {
             return { ...state, isHappy: action.payload };
 
         case NEW_CHATROOM:
+            // add a new chatroom object to the chatroom array without state mutations!
+            const tempId = Math.random().toString();
+            //const chatRoom = {id: Math.random(), imageUrl: '', ...}
+            const chatRoom = new ChatRoom(tempId, undefined, action.payload, []);
+
+            return { ...state, chatRooms: [...state.chatRooms, chatRoom] };
+
             //fjkdæka
 
     default:
