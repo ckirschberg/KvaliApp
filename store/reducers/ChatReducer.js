@@ -32,15 +32,8 @@ const ChatReducer = (state = initialState, action) => {
             // Copy messages array of the right chatroom object
             // Copy chatrooms to avoid state mutations when updating the messages array in the 
             // specific chatroom object.
-            
-
             const chatroom = state.chatRooms.find(room => room.chatRoomId === action.payload.chatRoomId);
             const chatmessages = [...chatroom.messages, action.payload.messageObj];
-
-
-
-
-            
             
             // 2: Copy chatroom object and attach new chat array that you copied.
             const newChatRoom = { ...chatroom };

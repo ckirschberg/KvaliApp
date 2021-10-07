@@ -13,22 +13,18 @@ import { HeaderShownContext } from '@react-navigation/elements';
 
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import ChatReducer from './store/reducers/ChatReducer';
+import UserReducer from './store/reducers/UserReducer';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-
+import ReduxThunk from 'redux-thunk';
 
 const rootReducer = combineReducers({
   chat: ChatReducer,
-  //user: UserReducer,
+  user: UserReducer,
   //posts: PostReducer
 });
 
-
-const store = createStore(rootReducer, 
-  composeWithDevTools());
-
-
-  
+const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 export default function App() {
 
   
