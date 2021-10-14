@@ -10,6 +10,7 @@ import DiscoverScreen from './../screens/DiscoverScreen';
 import MenuScreen from './../screens/MenuScreen';
 import { HeaderShownContext } from '@react-navigation/elements';
 import SignupScreen from './../screens/SignupScreen';
+import LoginScreen from './../screens/LoginScreen';
 import { useSelector } from 'react-redux';
 
 const Navigation = props => {
@@ -17,7 +18,6 @@ const Navigation = props => {
     const Stack = createNativeStackNavigator();
     const Tab = createBottomTabNavigator();
     const loggedInUser = useSelector(state => state.user.loggedInUser);
-console.log(loggedInUser);
 
     return (
     <NavigationContainer>
@@ -33,6 +33,7 @@ console.log(loggedInUser);
     ) : (
 
         <Stack.Navigator>
+            <Stack.Screen name="Login" component={LoginScreen} />
             <Stack.Screen name="Signup" component={SignupScreen} />
         </Stack.Navigator>
     

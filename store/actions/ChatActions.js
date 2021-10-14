@@ -10,9 +10,39 @@ export const toggleHappy = (isHappy) => {
     return { type: TOGGLE_HAPPY, payload: isHappy };
 };
 
+
+
 export const newChatRoom = (chatroomName) => {
-    return { type: NEW_CHATROOM, payload: chatroomName };
+    return async (dispatch, getState) => { // redux thunk
+        const token = getState().user.token; // accessing token in the state.
+
+        const response = await fetch('https://kvaliapp-default-rtdb.europe-west1.firebasedatabase.app/chatrooms.json?auth=' +  token, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ //javascript to json
+                //key value pairs of data you want to send to server
+                // ...
+                
+            })
+        });
+  
+        const data = await response.json(); // json to javascript
+        console.log(data);
+        if (!response.ok) {
+            //There was a problem..
+        } else {
+            // do something?
+            dispatch({ type: NEW_CHATROOM, payload: chatroomName })
+        }
+    };
 };
+
+
+
+
+
 
 export const deleteChatRoom = (chatroomName) => {
     return { type: DELETE_CHATROOM, payload: chatroomName };
