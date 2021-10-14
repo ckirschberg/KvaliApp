@@ -4,6 +4,7 @@ import { ChatRooms } from './../dummy-data/DummyData';
 import ChatMessage from './../components/ChatMessage';
 import { useDispatch, useSelector } from 'react-redux';
 import { newChatMessage } from '../store/actions/ChatActions';
+import { signup } from '../store/actions/UserActions'; // Test
 
 const ChatMessagesScreen = props => {
     const dispatch = useDispatch();
@@ -18,8 +19,9 @@ const ChatMessagesScreen = props => {
     
 
     const handleSend = () => {
-        dispatch(newChatMessage(id, value));
-        console.log("value " + value);
+        dispatch(signup('chrk@kea.dk', '123456'));
+        //dispatch(newChatMessage(id, value));
+        //console.log("value " + value);
     };
 
     return (

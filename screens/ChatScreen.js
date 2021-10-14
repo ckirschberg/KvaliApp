@@ -20,6 +20,9 @@ const ChatScreen = props => {
       dispatch(toggleHappy(!isHappy));
    };
 
+
+   
+
    return (
       <View style={styles.container}>
          <Text>Is Christian happy? {String(isHappy)}</Text>      

@@ -12,7 +12,7 @@ const ChatReducer = (state = initialState, action) => {
         case TOGGLE_HAPPY:
             //state.isHappy = true; // NOOOOO !!! state mutation not allowed
             return { ...state, isHappy: action.payload };
-
+            
         case NEW_CHATROOM:
             // add a new chatroom object to the chatroom array without state mutations!
             const tempId = Math.random().toString();
