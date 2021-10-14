@@ -16,6 +16,8 @@ export const newChatRoom = (chatroomName) => {
     return async (dispatch, getState) => { // redux thunk
         const token = getState().user.token; // accessing token in the state.
 
+                                    // Find this link for YOUR firebase, in the "Realtime Database"-tab in the firebase console
+                                    // You must use YOUR link and not this link, to save data in your database and not mine.
         const response = await fetch('https://kvaliapp-default-rtdb.europe-west1.firebasedatabase.app/chatrooms.json?auth=' +  token, {
             method: 'POST',
             headers: {
