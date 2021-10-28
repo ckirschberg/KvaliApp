@@ -1,4 +1,4 @@
-import { LOGIN, SIGNUP } from "../actions/UserActions";
+import { LOGIN, SIGNUP, LOGOUT, REFRESH_TOKEN } from "../actions/UserActions";
 
 const initialState = {
     loggedInUser: undefined,
@@ -7,6 +7,12 @@ const initialState = {
 
 const UserReducer = (state = initialState, action) => {
     switch (action.type) {
+        case REFRESH_TOKEN:
+            return { ...state, token: action.payload };
+        
+        case LOGOUT:
+            return {...state, loggedInUser: undefined, token: undefined };
+
         case SIGNUP:
             // Do something here
             // const test = { ...state, loggedInUser: action.payload.user, token: action.payload.token };

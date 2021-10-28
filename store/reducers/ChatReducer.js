@@ -1,18 +1,22 @@
 import ChatRoom from "./../../models/ChatRoom";
-import { DELETE_CHATROOM, NEW_CHATMESSAGE, NEW_CHATROOM, TOGGLE_HAPPY } from "../actions/ChatActions";
-import { ChatRooms } from './../../dummy-data/DummyData';
+import { DELETE_CHATROOM, FETCH_CHATROOMS, NEW_CHATMESSAGE, NEW_CHATROOM, TOGGLE_HAPPY } from "../actions/ChatActions";
+import { LOGOUT } from "../actions/UserActions";
 
 const initialState = {
     isHappy: false,
-    chatRooms: ChatRooms
+    chatRooms: []
 };
 
 const ChatReducer = (state = initialState, action) => {
     switch (action.type) {
+        
         case TOGGLE_HAPPY:
             //state.isHappy = true; // NOOOOO !!! state mutation not allowed
             return { ...state, isHappy: action.payload };
             
+        case FETCH_CHATROOMS: 
+            return {...state, chatRooms: action.payload };
+
         case NEW_CHATROOM:
             // add a new chatroom object to the chatroom array without state mutations!
             const tempId = Math.random().toString();

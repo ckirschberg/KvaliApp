@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import ChatRoom from './../components/ChatRoom'
 import { useDispatch, useSelector } from 'react-redux';
 
-import { toggleHappy, newChatRoom, deleteChatRoom } from './../store/actions/ChatActions';
+import { toggleHappy, newChatRoom, deleteChatRoom, fetchChatRooms } from './../store/actions/ChatActions';
 import defaultStyles from './../GeneralStyles';
 
 const ChatScreen = props => {
@@ -20,6 +20,11 @@ const ChatScreen = props => {
       dispatch(toggleHappy(!isHappy));
    };
 
+
+   React.useEffect(() => {
+      console.log("fetching chatrooms");
+      dispatch(fetchChatRooms());
+   }, []);
 
    
 

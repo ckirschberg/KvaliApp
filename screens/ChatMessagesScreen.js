@@ -5,6 +5,7 @@ import ChatMessage from './../components/ChatMessage';
 import { useDispatch, useSelector } from 'react-redux';
 import { newChatMessage } from '../store/actions/ChatActions';
 import { signup } from '../store/actions/UserActions'; // Test
+import Message from '../models/Message';
 
 const ChatMessagesScreen = props => {
     const dispatch = useDispatch();
@@ -16,10 +17,12 @@ const ChatMessagesScreen = props => {
     
     //const chatMessages = ChatRooms.find(room => room.chatRoomId === id).messages;
     const chatMessages = useSelector(state => state.chat.chatRooms).find(room => room.chatRoomId === id).messages;
+    const loggedInUser = useSelector(state => state.user.loggedInUser);
     
 
     const handleSend = () => {
-        dispatch(signup('chrk@kea.dk', '123456'));
+        const message = new Message('',value, new Date(), loggedInUser);
+        dispatch(newChatMessage(id, message));
         //dispatch(newChatMessage(id, value));
         //console.log("value " + value);
     };
