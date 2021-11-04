@@ -4,6 +4,8 @@ class Message {
         this.messageText = messageText;
         this.messageTimestamp = messageTimestamp;
         this.user = user;
+        
+        this.number = myNumber;
     }
 }
 

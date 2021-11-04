@@ -23,7 +23,8 @@ const UserReducer = (state = initialState, action) => {
 
 
         case LOGIN:
-            return { ...state, loggedInUser: action.payload.user, token: action.payload.token };
+            return { ...state, loggedInUser: action.payload.user, 
+                token: action.payload.token };
 
     default:
         return state;
