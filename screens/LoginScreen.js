@@ -54,13 +54,13 @@ const LoginScreen = props => {
 
 
     return (
-    <View style={styles.container}>
-        <TextInput style={defaultStyles.textInput} onChangeText={onChangeEmail} value={email} />
-        <TextInput style={defaultStyles.textInput} onChangeText={onChangePassword} value={password} />
+      <View style={styles.container}>
+          <TextInput style={defaultStyles.textInput} onChangeText={onChangeEmail} value={email} />
+          <TextInput style={defaultStyles.textInput} onChangeText={onChangePassword} value={password} />
 
-        <Button title="Login" onPress={handleLogin} />
-    </View>
- );
+          <Button title="Login" onPress={handleLogin} />
+      </View>
+  );
 }
 
 const styles = StyleSheet.create({

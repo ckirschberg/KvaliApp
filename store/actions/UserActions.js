@@ -91,9 +91,9 @@ export const login = (email, password) => {
 
 
 export const signup = (email, password) => {
-    console.log(email + " " + password);
+    // console.log(email + " " + password);
    return async dispatch => { // redux thunk
-    console.log("again" + email + " " + password);
+    // console.log("again" + email + " " + password);
        const response = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' +  api_key, {
            method: 'POST',
            headers: {
