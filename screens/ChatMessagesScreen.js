@@ -27,6 +27,7 @@ const ChatMessagesScreen = props => {
         //console.log("value " + value);
     };
 
+    
     return (
     <View style={styles.container}>
             
@@ -38,8 +39,8 @@ const ChatMessagesScreen = props => {
             
             <View style={styles.inputView}>
                 <Image
-                    style={styles.tinyLogo}
-                    source={require('./../assets/6d38ab105ed32e0c25e4f82e1e9ccd2a.png')}/>
+                    source={{ uri: 'https://picsum.photos/200/300' }}
+                    style={{width: 50, height: 50}}/>
                 
                 <TextInput
                     style={styles.textInput}
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
         
     },
     tinyLogo: {
-        
+    
         marginTop: -5
     },
 });

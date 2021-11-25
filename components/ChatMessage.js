@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, Image } from 'react-native';
+import { useSelector } from 'react-redux';
 
 const ChatMessage = props => {
     //props.chatmessage
@@ -8,7 +9,7 @@ const ChatMessage = props => {
     //show time if time is not the same as previous time and same user
     //show date if this message contains a new date compared to previous.
     
-    const hardcodedUserId = '1';
+    const hardcodedUserId = useSelector(state => state.user.loggedInUser).id;
 
     const hours = props.chatmessage.messageTimestamp.getHours();
     const minutes = props.chatmessage.messageTimestamp.getMinutes();
